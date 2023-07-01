@@ -40,4 +40,4 @@ g++ .\main.cpp -o tictactoe
 5.To exit the game at any time, press Ctrl+C on your keyboard.
 
 ## License
-All copyright of This project belongs to Null == 0
+All copyright of This project belongs to CodeCinnamon001

@@ -20,11 +20,104 @@ class Player: public TicTacToe {
   public:
   void user_one_move();
   void user_two_move();
+  Player(Player &obj) {
+   obj.set_value();
+   obj.draw_board();
+
+  while (obj.running) {
+
+    obj.user_one_move();
+
+    obj.draw_board();
+
+    if (obj.check_win()) {
+
+      obj.running = false;
+
+      break;
+
+    }
+
+    else if (obj.check_tie()) {
+
+      obj.running = false;
+
+      break;
+    }
+
+    obj.user_two_move();
+
+    obj.draw_board();
+
+    if (obj.check_win()) {
+
+      obj.running = false;
+
+      break;
+
+    }
+
+    else if (obj.check_tie()){
+
+      obj.running = false;
+
+      break;
+    }
+  }
+  std::cout << "Thanks for playing!\n";
+  }
 };
 class Player_Bot: public TicTacToe {
   public: 
   void player_move();
   void bot_move();
+  Player_Bot(Player_Bot &obj){
+   obj.set_value();
+   obj.draw_board();
+
+  while (obj.running) {
+
+    obj.player_move();
+
+    obj.draw_board();
+
+    if (obj.check_win()) {
+
+      obj.running = false;
+
+      break;
+
+    }
+
+    else if (obj.check_tie()) {
+
+      obj.running = false;
+
+      break;
+    }
+
+    obj.bot_move();
+
+    obj.draw_board();
+
+    if (obj.check_win()) {
+
+      obj.running = false;
+
+      break;
+
+    }
+
+    else if (obj.check_tie()){
+
+      obj.running = false;
+
+      break;
+    }
+  }
+  std::cout << "Thanks for playing!\n";
+  }
+  
 };
 
 
@@ -249,52 +342,24 @@ void Player_Bot::bot_move() {
 }
 
 int main() {
-  Player p1;
-   p1.set_value();
-   p1.draw_board();
 
-  while (p1.running) {
+  int choice;
+  std::cout <<"1.Singleplayer Mode "<<std::endl;
+  std::cout <<"2.Multiplayer Mode "<<std::endl;
+ while(true){
 
-    p1.user_one_move();
-
-    p1.draw_board();
-
-    if (p1.check_win()) {
-
-      p1.running = false;
-
-      break;
-
+  std::cout << "Choose The GameMode :  ";
+  std::cin >> choice;
+  if(choice == 1) {
+    Player_Bot game_one(game_one);
+    break;
     }
-
-    else if (p1.check_tie()) {
-
-      p1.running = false;
-
-      break;
+  if (choice == 2){
+    Player game_two(game_two);
+    break;
     }
-
-    p1.user_two_move();
-
-    p1.draw_board();
-
-    if (p1.check_win()) {
-
-      p1.running = false;
-
-      break;
-
+  else std::cout << "invalid input"<<std::endl;
     }
-
-    else if (p1.check_tie()){
-
-      p1.running = false;
-
-      break;
-    }
-  }
-  std::cout << "Thanks for playing!\n";
-
   return 0;
 }
   
